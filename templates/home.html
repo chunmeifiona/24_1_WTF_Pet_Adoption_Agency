@@ -8,7 +8,8 @@
         <div class="card m-2 " style="width: 18rem;">
             <img src=" {{pet.photo_url}}" class="card-img-top mt-2" alt="">
             <div class="card-body">
-                <a href="/{{pet.id}}">{{pet.name}}</a> <b>is {{pet.available}}</b>
+                <a href="/{{pet.id}}">{{pet.name}}</a>
+                {% if pet.available %}<b>is available!</b>{% endif %}
 
             </div>
         </div>
