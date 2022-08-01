@@ -6,13 +6,14 @@
     <div class="row align-items-start">
         {% for pet in pets %}
         <div class="card m-2 " style="width: 18rem;">
-            <img src=" {{pet.photo_url}}" class="card-img-top" alt="">
+            <img src=" {{pet.photo_url}}" class="card-img-top mt-2" alt="">
             <div class="card-body">
-                {{pet.name}} <b>is {{pet.available}}</b>
+                <a href="/{{pet.id}}">{{pet.name}}</a> <b>is {{pet.available}}</b>
+
             </div>
         </div>
         {% endfor %}
     </div>
-    <a href="/add"><button type="button" class="btn btn-info">Add a Pet</button></a>
+    <a href=" /add"><button type="button" class="btn btn-info">Add a Pet</button></a>
 </div>
 {% endblock %}
