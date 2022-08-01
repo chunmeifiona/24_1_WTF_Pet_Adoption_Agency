@@ -44,12 +44,11 @@ def edit_pet(pet_id):
     """Display/Edit Form"""
     pet = Pet.query.get_or_404(pet_id)
     form = EditPetForm(obj=pet)
-    # raise
 
     if form.validate_on_submit():
         pet.photo_url=form.photo_url.data
         pet.notes=form.notes.data
-        pet.available=form.avaiable.data
+        pet.available=form.available.data
 
         db.session.commit()
         return redirect("/")
