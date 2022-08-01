@@ -15,6 +15,8 @@ debug = DebugToolbarExtension(app)
 connect_db(app)
 db.create_all()
 
+DEFAULT_PHOTO_URL = "https://images.unsplash.com/photo-1563460716037-460a3ad24ba9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fHBldHN8ZW58MHx8MHx8&auto=format&fit=crop&w=400&q=60"
+
 @app.route('/')
 def show_home_page():
     """Show home page Listing Pets"""
@@ -26,9 +28,10 @@ def add_pet():
     """Create a form for adding pets"""
     form= AddPetForm()
     if form.validate_on_submit():
+        # raise
         name = form.name.data
         species = form.species.data
-        photo_url = form.photo_url.data
+        photo_url = form.photo_url.data if form.photo_url.data else DEFAULT_PHOTO_URL
         age = form.age.data
         notes = form.notes.data
         pet=Pet(name=name, species=species,photo_url=photo_url,age=age,notes=notes)
