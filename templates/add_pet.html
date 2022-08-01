@@ -1,21 +1,29 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Add a Pet</h1>
-<form id="add-form" method="POST">
-    {{ form.hidden_tag() }}
-    <!--add type=hidden form fields -->
-    {% for field in form
-    if field.widget.input_type != 'hidden' %}
-    <p>
-        {{ field.label }}
-        {{ field }}
-        {% for error in field.errors %}
-        {{ error }}
-        {% endfor %}
-    </p>
-    {% endfor %}
-    <button type="button submit" class="btn btn-info">Submit</button>
-</form>
+<h1 class="display-1 text-center">Add a Pet</h1>
+<div class="container bg-secondary p-2 mt-3 text-dark bg-opacity-10 rounded">
+    <div class="row justify-content-center">
+        <div class="col">
+            <form id="add-form" method="POST">
+                {{ form.hidden_tag() }}
+                <!--add type=hidden form fields -->
+                {% for field in form
+                if field.widget.input_type != 'hidden' %}
+                <div class="mb-3">
+                    {{ field.label(class_="form-label") }}
+                    {{ field(class_="form-control")}}
+                    {% for error in field.errors %}
+                    <small class="mb-3 form-text text-danger">
+                        {{ error }}
+                    </small>
+                    {% endfor %}
+                </div>
+                {% endfor %}
+                <button type="button submit" class="btn btn-info">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
 
 {% endblock %}

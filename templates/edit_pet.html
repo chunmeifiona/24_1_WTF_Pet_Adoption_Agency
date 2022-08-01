@@ -1,28 +1,30 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Edit Pet</h1>
-<div class="d-flex position-relative">
-    <img src=" {{pet.photo_url}}" class="flex-shrink-0 me-3" alt="{{pet.name}}">
-    <div>
-        <h5 class="mt-0">{{pet.name}}</h5>
-        <p>Species: {{pet.species}}</p>
-        <p>Age:{{pet.age}}</p>
-        <form id="edit-form" method="POST">
-            {{ form.hidden_tag() }}
-            <!--add type=hidden form fields -->
-            {% for field in form
-            if field.widget.input_type != 'hidden' %}
-            <p>
-                {{ field.label }}
-                {{ field }}
-                {% for error in field.errors %}
-                {{ error }}
-                {% endfor %}
-            </p>
-            {% endfor %}
-            <button type="button submit" class="btn btn-info">Submit</button>
-        </form>
+<h1 class="display-1 text-center">Edit Pet</h1>
+<div class="container bg-secondary p-2 mt-3 text-dark bg-opacity-10 rounded">
+    <div class="d-flex position-relative">
+        <img src=" {{pet.photo_url}}" class="flex-shrink-0 me-3" alt="{{pet.name}}">
+        <div>
+            <h5 class="mt-0">{{pet.name}}</h5>
+            <p>Species: {{pet.species}}</p>
+            <p>Age:{{pet.age}}</p>
+            <form id="edit-form" method="POST">
+                {{ form.hidden_tag() }}
+                <!--add type=hidden form fields -->
+                {{form.photo_url.label(class_="form-label")}}
+                {{form.photo_url(class_="form-control")}}
+
+                {{form.notes.label(class_="form-label")}}
+                {{form.notes(class_="form-control")}}
+                <div class="form-check">
+                    {{form.available.label(class_="form-check-label")}}
+                    {{form.available(class_="form-check-input")}}
+                </div>
+
+                <button type="button submit" class="btn btn-info">Submit</button>
+            </form>
+        </div>
     </div>
 </div>
 
